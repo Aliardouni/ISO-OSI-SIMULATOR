@@ -24,42 +24,28 @@ char* livello2_send(const char* dati){
     return livello1_send(buffer);
 }
 
-char* livello2_receive(const char* dati){
+char* livello2_receive(const char* dati) {
     char* buffer;
-    int oldCheck=checksum(dati, "[ENC=ROT13]");     //old is actually new, and new is the old one
-    int i=0;
-    int number=0;
+    int check_locale = checksum(dati, "[ENC=ROT13]");
 
-    char* toCheck=strstr(dati, "[CHECKSUM]");       //old is actually new, and new is the old one
-    toCheck+=12;
-    char newCheck[10]={' '};
+    const char* inizio_check = strstr(dati, "[CHECKSUM][");
 
-    newCheck[i++]=*toCheck;                         //old is actually new, and new is the old one
+    inizio_check += strlen("[CHECKSUM][");
+    int check_ricevuto = 0;
+    sscanf(inizio_check, "%d", &check_ricevuto);
 
-    while(*toCheck!=']')
-    {
-        newCheck[i++]=*toCheck++;
-    }
-
-    for (i = 0; i < 10; i++) {        //old is actually new, and new is the old one
-        if (isdigit(newCheck[i])) {
-            number=number*10+(newCheck[i]-'0');
-        }
-    }
-
-    if(number==oldCheck)
-    {
+    if (check_locale == check_ricevuto) {
         buffer=strstr(dati, "]")+1;
         buffer=strstr(buffer, "]")+1;
         buffer=strstr(buffer, "]")+1;
-        char* tagPos = strstr(buffer, "[CHECKSUM]");
-        *tagPos = '\0';
+
+        char* pos_check = strstr(buffer, "[CHECKSUM]");
+        if (pos_check) *pos_check = '\0';
+
         printf("\n\nRitorno Livello 2:\n%s", buffer);
         return livello3_receive(buffer);
-    }
-    else
-    {
-        printf("\n\nErrore nella comunicazione nel livello 2");
+    } else {
+        printf("\n\nErrore nella comunicazione nel livello 2: checksum non corrisponde.");
         return NULL;
     }
 }
