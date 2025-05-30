@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="progetto_ISO-OSI" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/progetto_ISO-OSI" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/progetto_ISO-OSI" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="livello1_fisico.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello1_fisico.h" />
+		<Unit filename="livello2_collegamento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello2_collegamento.h" />
+		<Unit filename="livello3_rete.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello3_rete.h" />
+		<Unit filename="livello4_trasporto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello4_trasporto.h" />
+		<Unit filename="livello5_sessione.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello5_sessione.h" />
+		<Unit filename="livello6_presentazione.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello6_presentazione.h" />
+		<Unit filename="livello7_applicazione.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="livello7_applicazione.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mezzo_trasmissivo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="mezzo_trasmissivo.h" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
